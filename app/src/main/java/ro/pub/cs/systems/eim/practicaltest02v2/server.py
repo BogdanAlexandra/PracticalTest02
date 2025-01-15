@@ -17,10 +17,9 @@ def start_server():
 
     try:
         while True:
-            # Trimite data și ora curente
             current_time = datetime.now().strftime("%H:%M:%S")
-            conn.sendall(current_time.encode('utf-8'))  # Trimite datele în UTF-8
-            time.sleep(1)  # Așteaptă 1 secundă
+            conn.sendall(current_time.encode('utf-8'))
+            time.sleep(1)
     except (BrokenPipeError, KeyboardInterrupt):
         print("Connection closed.")
     finally:
