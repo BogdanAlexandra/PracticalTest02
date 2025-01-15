@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <!-- Permisiune pentru acces la internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +15,13 @@
         android:theme="@style/Theme.PracticalTest02v2"
         tools:targetApi="31">
         <activity
+            android:name=".SecondActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PracticalTest02v2SecondActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PracticalTest02v2" /> <!-- Activitatea principală -->
+        <activity
             android:name=".PracticalTest02v2MainActivity"
             android:exported="true">
             <intent-filter>
@@ -20,7 +29,17 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> <!-- Serviciul Server -->
+        <service
+            android:name=".Server"
+            android:exported="false" /> <!-- Receiver pentru procesarea rezultatului din broadcast -->
+        <receiver
+            android:name=".Receiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.DICTIONARY_RESULT" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
